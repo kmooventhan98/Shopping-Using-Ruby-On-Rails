@@ -1,0 +1,16 @@
+<%if current_user.name=="Mooventhan"%>
+
+<h1><center><b>Add Product</b></center></h1>
+
+<%= render 'form', instrument: @instrument %>
+
+<%= link_to 'Back', instruments_path %>
+
+<%else%>
+<div class="container">
+<div class="jumbotron">
+<h2 class="text-danger">Authentication Failed</h2>
+<p>You are not a Admin</p>
+</div>
+</div>
+<%end%>

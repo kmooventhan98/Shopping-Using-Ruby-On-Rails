@@ -1,0 +1,22 @@
+<div class="jumbotron">
+
+<div class="card ml-3" > <!--style="max-width: 880px;"-->
+  <div class="row no-gutters">
+    <div class="col-md-4">
+     			<%= image_tag(line_item.instrument.image_url(:thumb))%>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><strong>Quantity:</strong> <%= line_item.quantity %></h5>
+        <h5 class="card-text"><strong><%=line_item.instrument.title%></strong></h5>
+        <p class="card-text"><strong><%= truncate(line_item.instrument.description,length: 140) %></strong></p>
+        <h5 class="card-text"><small class="text-muted"><strong>Price: &#8377;<%=line_item.total_price%></strong></small></h5>
+			
+	<%= link_to "Revome Item", line_item, method: :delete ,data:{confirm: "Are you sure to delete"}, class:"btn btn-danger"%>
+		
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<hr>
