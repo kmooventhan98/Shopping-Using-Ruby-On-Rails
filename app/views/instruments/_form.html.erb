@@ -1,0 +1,66 @@
+<div class="container">
+<div class="row d-flex justify-content-center">
+<div class="col-md-4">
+<%= simple_form_for @instrument,html:{multipart: true} do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+   <div class="field form-group">
+    <% f.label :title %><br />
+    <%= f.text_field :title,
+    class:"form-control",placeholder:"Title", autofocus: false %>
+  </div>
+  <div class="field form-group">
+    <% f.label :model %><br />
+    <%= f.text_field :model,
+    class:"form-control",placeholder:"Model", autofocus: false %>
+  </div>
+   <div class="field form-group">
+    <% f.label :description %><br />
+    <%= f.text_field :description,
+    class:"form-control",placeholder:"Description", autofocus: false %>
+  </div>
+  <div class="field form-group">
+    <% f.label :brand %><br />
+    <%= f.input_field :brand,
+    class:"form-control",collection: Instrument::BRAND, prompt:"select brand", autofocus: false %>
+  </div>
+  <div class="field form-group">
+    <% f.label :color %><br />
+    <%= f.input_field :color,
+    class:"form-control",collection: Instrument::COLOR, prompt:"select color", autofocus: false %>
+  </div>
+  <div class="field form-group">
+    <% f.label :condition %><br />
+    <%= f.input_field :condition,
+    class:"form-control",collection: Instrument::CONDITION, prompt:"select condition", autofocus: false %>
+  </div>
+   <div class="field form-group">
+    
+    <%= f.input :price %>
+  </div>
+  <div class="field form-group">
+  <span>
+      <span>Choose a file</span>
+  </span>
+   <%= f.input :image,as: :file,class:"instrument-image"%>
+</div>
+<output id="list"></output>
+
+
+
+
+  <div class="form-actions d-flex justify-content-center">
+    <%= f.button :submit ,"Create Item",class:"btn btn-success"%>
+    
+
+    
+  </div>
+  <hr>
+  <%= link_to 'Cancel',instruments_path%>
+
+
+<% end %>
+</div>
+</div>
+</div>

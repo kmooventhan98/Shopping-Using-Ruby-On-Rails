@@ -1,0 +1,107 @@
+<div class="container">
+<% if !user_signed_in?%>
+<div class="alert alert-warning text-center" role="alert">
+      <strong> <%=link_to 'Please Login If you want to make purchase', new_user_session_path, class: "text-dark"%>  </strong>
+</div>
+
+<%end%>
+
+  <div class="row">
+  <% @instruments.each do |instrument| %>
+
+  <div class="col-3">
+
+    <div class="card">
+      <div class="card-header">
+        <h5><%= instrument.brand %></h5>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= instrument.model %></h5>
+        <p class="card-text">
+
+        <%= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+        
+        </p>
+        <p class="card-text">
+
+        <%= instrument.condition %>
+        <%= instrument.color %>
+        <%= instrument.description %>
+        <small class="text-muted">&#8377;<%= instrument.price %></small>
+        </p>
+
+ 
+        <% if user_signed_in?%>
+          
+          <%= link_to 'Buy Now', instrument,class: "btn btn-success btn-sm btn-block" %>
+          
+
+        <%end%>
+         
+
+    </div>
+    </div>
+  </div>
+<% end %>
+
+
+</div>
+
+
+
+
+
+
+
+<!--
+
+
+
+
+<div class="container ">
+   <div class="row">
+  <% @instruments.each do |instrument| %>
+      <div class="col-md-4">
+          <div class="card mb-4 box-shadow">
+               
+               <p><b><%= instrument.title %></b></p>
+   
+            <div class="instrument-thumb">
+                <%= link_to image_tag(instrument.image_url(:thumb)), instrument %>
+
+                 <% if instrument.condition? %>
+                    <div >
+                        <span class="bg-dark"><%= instrument.condition %></span>
+                    </div>
+                <% end %>
+            </div>
+   
+
+                <div class="card-body">
+                  <p><b><%= instrument.brand %></b></p>
+                  <p><b><%= instrument.model %></b></p>
+                  <p><b><%= instrument.color %></b></p>
+                  <p class="card-text description">
+                    <%= instrument.description %>
+                  </p>
+                  <small>Sold by <%= instrument.user.name%></small>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'Show', instrument %></button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary"><%= link_to 'Edit', edit_instrument_path(instrument) %></button>
+                    </div>
+                    <small class="text-muted"><%= number_to_currency(instrument.price) %></small>
+                  </div>
+ 
+                </div>
+ 
+              </div>
+            </div>
+  <% end %>
+        </div>
+</div>
+
+ 
+<br>
+
+-->

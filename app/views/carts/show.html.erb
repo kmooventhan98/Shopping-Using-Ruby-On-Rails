@@ -1,0 +1,21 @@
+<div class="container">
+
+
+<section>
+	<div>
+		
+		<div>
+			<h4 class="float-right mr-5 mt-3">
+
+			<span><kbd> Total:&#8377; <%=@cart.total_price%> </kbd> </span>
+		    </h4>
+		</div>
+	</div>
+	<%= render (@cart.line_items)%>
+	
+	
+
+</section>
+</div>
+
+
